@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Bubble_Sort"
 Option Explicit
 
 Public ds As Object
@@ -9,7 +9,7 @@ Public reports As String
 Sub sorting_demo()
 
 Call data_acquisition
-Call bubble_sort
+Call Bubble_Sort
 Call reporting
 
 End Sub
@@ -31,7 +31,7 @@ End Sub
 ' core business: sorting
 ' a) # of iterations
 ' b) # of comparision in each iteration
-Sub bubble_sort()
+Sub Bubble_Sort()
     Dim size As Integer
     Dim i As Integer
     Dim j As Integer

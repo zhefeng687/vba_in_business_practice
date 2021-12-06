@@ -13,6 +13,7 @@ Call Bubble_Sort
 Call reporting
 
 End Sub
+
 ' data acquisition
 ' Ref: https://excelmacromastery.com/vba-arraylist/
 ' Declare and Create ArrayList
@@ -25,9 +26,9 @@ Sub data_acquisition()
         ds.Add 71
         ds.Add 61
         ds.Add 51
-    arr = ds.ToArray
-    
+    arr = ds.ToArray    
 End Sub
+	
 ' core business: sorting
 ' a) # of iterations
 ' b) # of comparision in each iteration
@@ -52,19 +53,19 @@ Sub Bubble_Sort()
       reports = reports & reporting_msg("Iter" & i & ": ", arr)
     Next
 End Sub
-Sub reporting()
+
 'original: 91, 81, 71, 61, 51
 'iter 0: 81, 71, 61, 51, 91
 'iter 1: 71, 61, 51, 81, 91
 'iter 2: 61, 51, 71, 81, 91
 'iter 3: 51, 61, 71, 81, 91
 'Fin: 51, 61, 71, 81, 91
-
+Sub reporting()
 'Only needs to report the final result
     reports = reports & reporting_msg("Fin:   ", arr)
     Debug.Print reports
-
 End Sub
+
 
 ' swapping elements
 ' subroutines is used when a desired task is needed but without a returning value
@@ -75,19 +76,16 @@ Sub swap_method(data As Variant, pos_1 As Integer, pos_2 As Integer)
         data(pos_2) = temp
 End Sub
 
+
 ' reporting function
-
 Function reporting_msg(pre_fix As String, data As Variant)
-
     Dim msg As String
-    Dim n As Integer
-    
+    Dim n As Integer   
     msg = pre_fix
     For n = 0 To UBound(arr)
         msg = msg & data(n) & ","
     Next
     reporting_msg = Left(msg, Len(msg) - 1) & vbNewLine
-
 End Function
 
 

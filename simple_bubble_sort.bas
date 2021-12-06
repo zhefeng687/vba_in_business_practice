@@ -5,7 +5,7 @@ Public ds As Object
 Public arr As Variant
 Public reports As String
 
-' construct a business process
+' construct a technical process
 Sub sorting_demo()
 
 Call data_acquisition

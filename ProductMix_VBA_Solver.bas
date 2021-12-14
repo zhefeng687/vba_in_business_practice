@@ -1,10 +1,9 @@
-Attribute VB_Name = "Module1"
 Option Explicit
-Sub main_process()
-Call init
-Call create_functions
-Call run_impact_analysis
 
+Sub main_process()
+    Call init
+    Call create_functions
+    Call run_impact_analysis
 End Sub
 
 Sub init()
@@ -29,7 +28,6 @@ Sub init()
     Range("D22").Name = "res_avail_metal"
     Range("D23").Name = "res_avail_glass"
     
-    
     Range("B26:E26").Name = "revenue"
     Range("B28:E28").Name = "labor_cost"
     Range("B29:E29").Name = "glass_cost"
@@ -40,6 +38,8 @@ Sub init()
     Range("J32:J39").Name = "profit_values"
     Range("K32:N39").Name = "impact_analysis"
 End Sub
+
+
 Sub create_functions()
     'resource constraints; single cell calculation
     Range("labor_used").Formula = "=sumproduct(produced,labor_per_frame)"
@@ -60,17 +60,17 @@ Sub create_functions()
     Range("max_profit").FormulaArray = "=sum(revenue-total_cost)"
 End Sub
 
+
 Sub run_impact_analysis()
     Range("impact_analysis").Clear
     Dim cell As Range
    ' Range("impact_analysis").Clear
     For Each cell In Range("profit_values")
         Call run_simulation(cell.value)
-        Range("produced").Copy cell.Offset(0, 1)
-        
-    Next cell
-    
+        Range("produced").Copy cell.Offset(0, 1)     
+    Next cell    
 End Sub
+
 
 Sub run_simulation(value As Integer)
     'clear
@@ -83,7 +83,6 @@ Sub run_simulation(value As Integer)
         SolverAdd CellRef:=Range("glass_used"), Relation:=1, FormulaText:=Range("res_avail_glass")
         
         'dont have to confirm each time
-        SolverSolve True
-    
+        SolverSolve True    
 End Sub
 
